@@ -4,6 +4,8 @@
  */
 package Business.Transcripts;
 
+import Business.Course.CourseOffering;
+
 /**
  *
  * @author chinm
