@@ -4,8 +4,8 @@
  * and open the template in the editor.
 
 */
-package Business;
 
+import Business.Business;
 import Business.Person.Person;
 import Business.Person.PersonDirectory;
 import Business.Profiles.EmployeeDirectory;
