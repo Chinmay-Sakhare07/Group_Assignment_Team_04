@@ -615,7 +615,7 @@ private TableRowSorter<TableModel> sorter;
     }//GEN-LAST:event_btnStudentGradeActionPerformed
 
     private void btnOpenEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenEnrollmentActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnOpenEnrollmentActionPerformed
 
     private void txtCourseTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseTitleActionPerformed
