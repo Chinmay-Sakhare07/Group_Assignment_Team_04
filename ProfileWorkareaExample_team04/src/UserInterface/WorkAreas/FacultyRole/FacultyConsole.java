@@ -4,18 +4,41 @@
  */
 package UserInterface.WorkAreas.FacultyRole;
 
+import Business.Business;
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
+
 /**
  *
  * @author anishagaikar
  */
 public class FacultyConsole extends javax.swing.JPanel {
 
+    private final Business business;
+    private final JPanel cardPanel;
+
+private DefaultTableModel courseModel;
+private TableRowSorter<TableModel> sorter;
+
     /**
      * Creates new form FacultyConsole
      */
-    public FacultyConsole() {
+    public FacultyConsole(Business business, JPanel CardSequencePanel) {
+         this.business = business;
+         this.cardPanel = CardSequencePanel;
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,68 +51,66 @@ public class FacultyConsole extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelCourses = new javax.swing.JPanel();
-        btnCourseView = new javax.swing.JButton();
-        btnCourseUpdate = new javax.swing.JButton();
+        btnOpenEnrollment = new javax.swing.JButton();
+        btnCloseEnrollment = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCourses = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        lblCourse = new javax.swing.JLabel();
+        lblCourseTitle = new javax.swing.JLabel();
+        lblCourseDescription = new javax.swing.JLabel();
+        lblCourseRoom = new javax.swing.JLabel();
+        lblCourseTime = new javax.swing.JLabel();
+        cboCourse = new javax.swing.JComboBox<>();
+        txtCourseTitle = new javax.swing.JTextField();
+        txtCourseDescription = new javax.swing.JTextField();
+        txtCourseRoom = new javax.swing.JTextField();
+        txtCourseTime = new javax.swing.JTextField();
+        lblCourseCapacity = new javax.swing.JLabel();
+        txtCourseCapacity = new javax.swing.JTextField();
+        lblCourseSyllabus = new javax.swing.JLabel();
+        txtCourseSyllabus = new javax.swing.JTextField();
+        btnCoursesSaveDetails = new javax.swing.JButton();
+        btnCourseSaveSyllabus = new javax.swing.JButton();
+        btnCourseBack = new javax.swing.JButton();
         jPanelStudents = new javax.swing.JPanel();
         cboCourses = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        lblStudentCourse = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnStudentTranscript = new javax.swing.JButton();
+        btnStudentGrade = new javax.swing.JButton();
+        btnStudentViewRanking = new javax.swing.JButton();
+        btnStudentBack = new javax.swing.JButton();
         jPanelProfiles = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jPanelReports = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        lblProfileFacultyID = new javax.swing.JLabel();
+        lblProfilesName = new javax.swing.JLabel();
+        lblProfilesEmail = new javax.swing.JLabel();
+        lblProfilesPhone = new javax.swing.JLabel();
+        lblProfilesDepartment = new javax.swing.JLabel();
+        lblProfilesOfficehrs = new javax.swing.JLabel();
+        txtProfilesFacultyID = new javax.swing.JTextField();
+        txtProfileName = new javax.swing.JTextField();
+        txtProfilesEmail = new javax.swing.JTextField();
+        txtProfilesPhone = new javax.swing.JTextField();
+        txtProfilesDepatment = new javax.swing.JTextField();
+        txtProfileOfficeHrs = new javax.swing.JTextField();
+        btnProfilesEdit = new javax.swing.JButton();
+        btnProfilesSave = new javax.swing.JButton();
+        btnProfilesBack = new javax.swing.JButton();
+        lblReportsSemester = new javax.swing.JPanel();
+        lblReportSemester = new javax.swing.JLabel();
+        lblReportsCourse = new javax.swing.JLabel();
+        cboReportSemester = new javax.swing.JComboBox<>();
+        cboReportsCourse = new javax.swing.JComboBox<>();
+        btnReportsLoad = new javax.swing.JButton();
+        btnReportsExport = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
+        tblReports = new javax.swing.JTable();
+        btnReportsBack = new javax.swing.JButton();
         jPanelTuition = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTuition = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        btnTuitionBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
 
@@ -97,14 +118,14 @@ public class FacultyConsole extends javax.swing.JPanel {
 
         jPanelCourses.setBackground(new java.awt.Color(0, 153, 153));
 
-        btnCourseView.setText("open Enrolment");
-        btnCourseView.addActionListener(new java.awt.event.ActionListener() {
+        btnOpenEnrollment.setText("open Enrolment");
+        btnOpenEnrollment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCourseViewActionPerformed(evt);
+                btnOpenEnrollmentActionPerformed(evt);
             }
         });
 
-        btnCourseUpdate.setText("close Enrollment");
+        btnCloseEnrollment.setText("close Enrollment");
 
         tblCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,35 +140,33 @@ public class FacultyConsole extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCourses);
 
-        jLabel1.setText("Course");
+        lblCourse.setText("Course");
 
-        jLabel2.setText("Title");
+        lblCourseTitle.setText("Title");
 
-        jLabel3.setText("Description");
+        lblCourseDescription.setText("Description");
 
-        jLabel4.setText("Room");
+        lblCourseRoom.setText("Room");
 
-        jLabel5.setText("Time");
+        lblCourseTime.setText("Time");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCourseTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCourseTitleActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Capacity");
+        lblCourseCapacity.setText("Capacity");
 
-        jLabel8.setText("Syllabus");
+        lblCourseSyllabus.setText("Syllabus");
 
-        jButton4.setText("Save Details");
+        btnCoursesSaveDetails.setText("Save Details");
 
-        jButton5.setText("Save Syllabus");
+        btnCourseSaveSyllabus.setText("Save Syllabus");
 
-        jButton6.setText("Refresh");
-
-        jButton7.setText("Back");
+        btnCourseBack.setText("Back");
 
         javax.swing.GroupLayout jPanelCoursesLayout = new javax.swing.GroupLayout(jPanelCourses);
         jPanelCourses.setLayout(jPanelCoursesLayout);
@@ -158,51 +177,49 @@ public class FacultyConsole extends javax.swing.JPanel {
                     .addGroup(jPanelCoursesLayout.createSequentialGroup()
                         .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelCoursesLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblCourseRoom)
                                 .addGap(38, 38, 38)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCourseRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanelCoursesLayout.createSequentialGroup()
-                                    .addComponent(jLabel6)
+                                    .addComponent(lblCourseCapacity)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCourseCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanelCoursesLayout.createSequentialGroup()
-                                    .addComponent(jLabel3)
+                                    .addComponent(lblCourseDescription)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtCourseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(78, 78, 78)
-                        .addComponent(jLabel5)
+                        .addComponent(lblCourseTime)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCourseTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCoursesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnCourseView)
+                        .addComponent(btnOpenEnrollment)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCourseUpdate)
+                        .addComponent(btnCloseEnrollment)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(btnCoursesSaveDetails)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6))
+                        .addComponent(btnCourseSaveSyllabus))
                     .addGroup(jPanelCoursesLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblCourseSyllabus)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCourseSyllabus, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanelCoursesLayout.createSequentialGroup()
                             .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
+                                .addComponent(lblCourse)
+                                .addComponent(lblCourseTitle))
                             .addGap(30, 30, 30)
                             .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCourseTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanelCoursesLayout.createSequentialGroup()
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton7))))
+                                    .addComponent(btnCourseBack))))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanelCoursesLayout.setVerticalGroup(
             jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,45 +228,44 @@ public class FacultyConsole extends javax.swing.JPanel {
                     .addGroup(jPanelCoursesLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblCourse)
+                            .addComponent(cboCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelCoursesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton7)))
+                        .addComponent(btnCourseBack)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseTitle)
+                    .addComponent(txtCourseTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseDescription)
+                    .addComponent(txtCourseDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseRoom)
+                    .addComponent(lblCourseTime)
+                    .addComponent(txtCourseRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseCapacity)
+                    .addComponent(txtCourseCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoursesLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblCourseSyllabus)
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCoursesLayout.createSequentialGroup()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCourseSyllabus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCourseView)
-                    .addComponent(btnCourseUpdate)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(btnOpenEnrollment)
+                    .addComponent(btnCloseEnrollment)
+                    .addComponent(btnCoursesSaveDetails)
+                    .addComponent(btnCourseSaveSyllabus))
                 .addGap(40, 40, 40))
         );
 
@@ -259,7 +275,7 @@ public class FacultyConsole extends javax.swing.JPanel {
 
         cboCourses.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel7.setText("Courses");
+        lblStudentCourse.setText("Courses");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,18 +290,18 @@ public class FacultyConsole extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jButton1.setText("Access Transcript");
+        btnStudentTranscript.setText("Access Transcript");
 
-        jButton2.setText("Grade Assigning");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnStudentGrade.setText("Grade Assigning");
+        btnStudentGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnStudentGradeActionPerformed(evt);
             }
         });
 
-        jButton3.setText("view Ranking");
+        btnStudentViewRanking.setText("view Ranking");
 
-        jButton12.setText("Back");
+        btnStudentBack.setText("Back");
 
         javax.swing.GroupLayout jPanelStudentsLayout = new javax.swing.GroupLayout(jPanelStudents);
         jPanelStudents.setLayout(jPanelStudentsLayout);
@@ -298,19 +314,19 @@ public class FacultyConsole extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelStudentsLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(jButton1)
+                        .addComponent(btnStudentTranscript)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnStudentGrade)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton3)))
+                        .addComponent(btnStudentViewRanking)))
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(jPanelStudentsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(lblStudentCourse)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboCourses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton12)
+                .addComponent(btnStudentBack)
                 .addGap(71, 71, 71))
         );
         jPanelStudentsLayout.setVerticalGroup(
@@ -319,15 +335,15 @@ public class FacultyConsole extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(jPanelStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboCourses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jButton12))
+                    .addComponent(lblStudentCourse)
+                    .addComponent(btnStudentBack))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanelStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnStudentTranscript)
+                    .addComponent(btnStudentGrade)
+                    .addComponent(btnStudentViewRanking))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -335,29 +351,34 @@ public class FacultyConsole extends javax.swing.JPanel {
 
         jPanelProfiles.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel11.setText("Faculty ID");
+        lblProfileFacultyID.setText("Faculty ID");
 
-        jLabel12.setText("Name");
+        lblProfilesName.setText("Name");
 
-        jLabel13.setText("Email ID");
+        lblProfilesEmail.setText("Email ID");
 
-        jLabel15.setText("Phone");
+        lblProfilesPhone.setText("Phone");
 
-        jLabel16.setText("Department");
+        lblProfilesDepartment.setText("Department");
 
-        jLabel17.setText("Office Hrs");
+        lblProfilesOfficehrs.setText("Office Hrs");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        txtProfilesDepatment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                txtProfilesDepatmentActionPerformed(evt);
             }
         });
 
-        jButton13.setText("Edit");
+        btnProfilesEdit.setText("Edit");
 
-        jButton14.setText("Save");
+        btnProfilesSave.setText("Save");
+        btnProfilesSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfilesSaveActionPerformed(evt);
+            }
+        });
 
-        jButton15.setText("Back");
+        btnProfilesBack.setText("Back");
 
         javax.swing.GroupLayout jPanelProfilesLayout = new javax.swing.GroupLayout(jPanelProfiles);
         jPanelProfiles.setLayout(jPanelProfilesLayout);
@@ -366,34 +387,35 @@ public class FacultyConsole extends javax.swing.JPanel {
             .addGroup(jPanelProfilesLayout.createSequentialGroup()
                 .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProfilesLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel12)
-                            .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanelProfilesLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel13))
-                                .addComponent(jLabel14)))
+                        .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfilesLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(lblProfilesEmail))
+                            .addGroup(jPanelProfilesLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblProfileFacultyID)
+                                    .addComponent(lblProfilesPhone)
+                                    .addComponent(lblProfilesDepartment)
+                                    .addComponent(lblProfilesOfficehrs)
+                                    .addComponent(lblProfilesName))))
                         .addGap(68, 68, 68)
                         .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProfileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProfilesEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProfilesPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProfilesDepatment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProfileOfficeHrs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelProfilesLayout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtProfilesFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                                .addComponent(jButton15))))
+                                .addComponent(btnProfilesBack))))
                     .addGroup(jPanelProfilesLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jButton13)
+                        .addComponent(btnProfilesEdit)
                         .addGap(79, 79, 79)
-                        .addComponent(jButton14)))
+                        .addComponent(btnProfilesSave)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
         );
         jPanelProfilesLayout.setVerticalGroup(
@@ -403,59 +425,65 @@ public class FacultyConsole extends javax.swing.JPanel {
                     .addGroup(jPanelProfilesLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblProfileFacultyID)
+                            .addComponent(txtProfilesFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelProfilesLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jButton15)))
+                        .addComponent(btnProfilesBack)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(jPanelProfilesLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))))
+                    .addComponent(lblProfilesName)
+                    .addComponent(txtProfileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProfilesEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProfilesEmail))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProfilesPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProfilesPhone))
                 .addGap(16, 16, 16)
                 .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
+                    .addComponent(txtProfilesDepatment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProfilesDepartment))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
+                    .addComponent(txtProfileOfficeHrs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProfilesOfficehrs))
                 .addGap(85, 85, 85)
                 .addGroup(jPanelProfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14))
+                    .addComponent(btnProfilesEdit)
+                    .addComponent(btnProfilesSave))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Profiles", jPanelProfiles);
 
-        jPanelReports.setBackground(new java.awt.Color(0, 153, 153));
+        lblReportsSemester.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel9.setText("Semester");
+        lblReportSemester.setText("Semester");
 
-        jLabel10.setText("Course");
+        lblReportsCourse.setText("Course");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboReportSemester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboReportsCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton9.setText("Load");
+        btnReportsLoad.setText("Load");
+        btnReportsLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsLoadActionPerformed(evt);
+            }
+        });
 
-        jButton10.setText("Export");
+        btnReportsExport.setText("Export");
+        btnReportsExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsExportActionPerformed(evt);
+            }
+        });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblReports.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -466,60 +494,60 @@ public class FacultyConsole extends javax.swing.JPanel {
                 "Letter Grade", "Count", "Percentage%"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane4.setViewportView(tblReports);
+        if (tblReports.getColumnModel().getColumnCount() > 0) {
+            tblReports.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jButton11.setText("Back");
+        btnReportsBack.setText("Back");
 
-        javax.swing.GroupLayout jPanelReportsLayout = new javax.swing.GroupLayout(jPanelReports);
-        jPanelReports.setLayout(jPanelReportsLayout);
-        jPanelReportsLayout.setHorizontalGroup(
-            jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelReportsLayout.createSequentialGroup()
+        javax.swing.GroupLayout lblReportsSemesterLayout = new javax.swing.GroupLayout(lblReportsSemester);
+        lblReportsSemester.setLayout(lblReportsSemesterLayout);
+        lblReportsSemesterLayout.setHorizontalGroup(
+            lblReportsSemesterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblReportsSemesterLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel9)
+                .addComponent(lblReportSemester)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboReportSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(jLabel10)
+                .addComponent(lblReportsCourse)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboReportsCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9)
+                .addComponent(btnReportsLoad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                .addComponent(btnReportsExport)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReportsLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblReportsSemesterLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReportsLayout.createSequentialGroup()
+                .addGroup(lblReportsSemesterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblReportsSemesterLayout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReportsLayout.createSequentialGroup()
-                        .addComponent(jButton11)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblReportsSemesterLayout.createSequentialGroup()
+                        .addComponent(btnReportsBack)
                         .addGap(82, 82, 82))))
         );
-        jPanelReportsLayout.setVerticalGroup(
-            jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelReportsLayout.createSequentialGroup()
+        lblReportsSemesterLayout.setVerticalGroup(
+            lblReportsSemesterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblReportsSemesterLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+                .addGroup(lblReportsSemesterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblReportSemester)
+                    .addComponent(lblReportsCourse)
+                    .addComponent(cboReportSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboReportsCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportsLoad)
+                    .addComponent(btnReportsExport))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton11)
+                .addComponent(btnReportsBack)
                 .addGap(101, 101, 101))
         );
 
-        jTabbedPane1.addTab("Reports", jPanelReports);
+        jTabbedPane1.addTab("Reports", lblReportsSemester);
 
         jPanelTuition.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -534,9 +562,9 @@ public class FacultyConsole extends javax.swing.JPanel {
                 "Student ID", "Billed", "Paid", "Remaining Due"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        tblTuition.setViewportView(jTable1);
 
-        jButton8.setText("Back");
+        btnTuitionBack.setText("Back");
 
         javax.swing.GroupLayout jPanelTuitionLayout = new javax.swing.GroupLayout(jPanelTuition);
         jPanelTuition.setLayout(jPanelTuitionLayout);
@@ -546,19 +574,19 @@ public class FacultyConsole extends javax.swing.JPanel {
                 .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanelTuitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTuitionLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tblTuition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTuitionLayout.createSequentialGroup()
-                        .addComponent(jButton8)
+                        .addComponent(btnTuitionBack)
                         .addGap(63, 63, 63))))
         );
         jPanelTuitionLayout.setVerticalGroup(
             jPanelTuitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTuitionLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tblTuition, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton8)
+                .addComponent(btnTuitionBack)
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
@@ -571,7 +599,7 @@ public class FacultyConsole extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,87 +610,97 @@ public class FacultyConsole extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnStudentGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentGradeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnStudentGradeActionPerformed
 
-    private void btnCourseViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseViewActionPerformed
+    private void btnOpenEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenEnrollmentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCourseViewActionPerformed
+    }//GEN-LAST:event_btnOpenEnrollmentActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCourseTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseTitleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCourseTitleActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void txtProfilesDepatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfilesDepatmentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_txtProfilesDepatmentActionPerformed
+
+    private void btnProfilesSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilesSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProfilesSaveActionPerformed
+
+    private void btnReportsLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsLoadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportsLoadActionPerformed
+
+    private void btnReportsExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsExportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportsExportActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCourseUpdate;
-    private javax.swing.JButton btnCourseView;
+    private javax.swing.JButton btnCloseEnrollment;
+    private javax.swing.JButton btnCourseBack;
+    private javax.swing.JButton btnCourseSaveSyllabus;
+    private javax.swing.JButton btnCoursesSaveDetails;
+    private javax.swing.JButton btnOpenEnrollment;
+    private javax.swing.JButton btnProfilesBack;
+    private javax.swing.JButton btnProfilesEdit;
+    private javax.swing.JButton btnProfilesSave;
+    private javax.swing.JButton btnReportsBack;
+    private javax.swing.JButton btnReportsExport;
+    private javax.swing.JButton btnReportsLoad;
+    private javax.swing.JButton btnStudentBack;
+    private javax.swing.JButton btnStudentGrade;
+    private javax.swing.JButton btnStudentTranscript;
+    private javax.swing.JButton btnStudentViewRanking;
+    private javax.swing.JButton btnTuitionBack;
+    private javax.swing.JComboBox<String> cboCourse;
     private javax.swing.JComboBox<String> cboCourses;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> cboReportSemester;
+    private javax.swing.JComboBox<String> cboReportsCourse;
     private javax.swing.JPanel jPanelCourses;
     private javax.swing.JPanel jPanelProfiles;
-    private javax.swing.JPanel jPanelReports;
     private javax.swing.JPanel jPanelStudents;
     private javax.swing.JPanel jPanelTuition;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lblCourse;
+    private javax.swing.JLabel lblCourseCapacity;
+    private javax.swing.JLabel lblCourseDescription;
+    private javax.swing.JLabel lblCourseRoom;
+    private javax.swing.JLabel lblCourseSyllabus;
+    private javax.swing.JLabel lblCourseTime;
+    private javax.swing.JLabel lblCourseTitle;
+    private javax.swing.JLabel lblProfileFacultyID;
+    private javax.swing.JLabel lblProfilesDepartment;
+    private javax.swing.JLabel lblProfilesEmail;
+    private javax.swing.JLabel lblProfilesName;
+    private javax.swing.JLabel lblProfilesOfficehrs;
+    private javax.swing.JLabel lblProfilesPhone;
+    private javax.swing.JLabel lblReportSemester;
+    private javax.swing.JLabel lblReportsCourse;
+    private javax.swing.JPanel lblReportsSemester;
+    private javax.swing.JLabel lblStudentCourse;
     private javax.swing.JTable tblCourses;
+    private javax.swing.JTable tblReports;
+    private javax.swing.JScrollPane tblTuition;
+    private javax.swing.JTextField txtCourseCapacity;
+    private javax.swing.JTextField txtCourseDescription;
+    private javax.swing.JTextField txtCourseRoom;
+    private javax.swing.JTextField txtCourseSyllabus;
+    private javax.swing.JTextField txtCourseTime;
+    private javax.swing.JTextField txtCourseTitle;
+    private javax.swing.JTextField txtProfileName;
+    private javax.swing.JTextField txtProfileOfficeHrs;
+    private javax.swing.JTextField txtProfilesDepatment;
+    private javax.swing.JTextField txtProfilesEmail;
+    private javax.swing.JTextField txtProfilesFacultyID;
+    private javax.swing.JTextField txtProfilesPhone;
     // End of variables declaration//GEN-END:variables
 }
