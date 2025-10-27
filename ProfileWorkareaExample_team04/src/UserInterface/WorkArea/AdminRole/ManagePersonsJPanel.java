@@ -16,6 +16,8 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
     public ManagePersonsJPanel() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
