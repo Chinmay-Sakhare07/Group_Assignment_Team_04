@@ -5,7 +5,10 @@
  */
 package Business.Profiles;
 
+import Business.Course.Enrollment;
 import Business.Person.Person;
+import Business.Transcripts.Transcript;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,15 +16,16 @@ import Business.Person.Person;
  */
 public class StudentProfile extends Profile {
 
-    Person person;
-//    Transcript transcript;
-    //   EmploymentHistroy employmenthistory;
+    private Transcript transcript;
+    private StudentAccount account;
+    private ArrayList<Enrollment> enrollments;
 
     public StudentProfile(Person p) {
         super(p);
+        this.transcript = new Transcript();
+        this.account = new StudentAccount();
+        this.enrollments = new ArrayList<>();
 
-//        transcript = new Transcript(this);
-//        employmenthistory = new EmploymentHistroy();
     }
 
     @Override
@@ -29,8 +33,43 @@ public class StudentProfile extends Profile {
         return "Student";
     }
 
+    @Override
     public boolean isMatch(String id) {
         return person.getPersonId().equals(id);
+    }
+
+    public void addEnrollment(Enrollment e) {
+        enrollments.add(e);
+        transcript.addTranscriptEntry(e);
+        account.billTuition(e.getOffering().getCourse().getCreditHours() * 1000.0);
+    }
+
+    public ArrayList<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public StudentAccount getAccount() {
+        return account;
+    }
+
+    public boolean isReadyToGraduate() {
+        double totalCredits = transcript.getTotalCredits();
+        boolean hasCore = transcript.hasCompletedCourse("INFO5100");
+        return totalCredits >= 32 && hasCore;
+    }
+
+    public int getCurrentTermCredits(String term) {
+        int sum = 0;
+        for (Enrollment e : enrollments) {
+            if (e.getOffering().getSemester().equalsIgnoreCase(term)) {
+                sum += e.getOffering().getCourse().getCreditHours();
+            }
+        }
+        return sum;
     }
 
 }
