@@ -54,8 +54,6 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setLayout(new java.awt.BorderLayout());
-
         northJPanel.setBackground(new java.awt.Color(0, 102, 102));
         northJPanel.setPreferredSize(new java.awt.Dimension(0, 70));
         northJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,8 +65,6 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
 
         btnBack.setText("Back");
         northJPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
-
-        add(northJPanel, java.awt.BorderLayout.PAGE_START);
 
         jSplitPane1.setDividerLocation(200);
 
@@ -195,7 +191,20 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(jPanel1);
 
-        add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(northJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(northJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIDActionPerformed
