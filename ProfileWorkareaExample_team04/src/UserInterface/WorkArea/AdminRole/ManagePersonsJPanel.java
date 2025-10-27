@@ -58,60 +58,65 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
 
         northJPanel.setBackground(new java.awt.Color(0, 102, 102));
         northJPanel.setPreferredSize(new java.awt.Dimension(0, 70));
-        northJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPersonMgm.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblPersonMgm.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonMgm.setText("Person Management");
-        northJPanel.add(lblPersonMgm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         btnBack.setText("Back");
-        northJPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+
+        javax.swing.GroupLayout northJPanelLayout = new javax.swing.GroupLayout(northJPanel);
+        northJPanel.setLayout(northJPanelLayout);
+        northJPanelLayout.setHorizontalGroup(
+            northJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(northJPanelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblPersonMgm)
+                .addGap(265, 265, 265)
+                .addComponent(btnBack))
+        );
+        northJPanelLayout.setVerticalGroup(
+            northJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(northJPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(northJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPersonMgm)
+                    .addComponent(btnBack)))
+        );
 
         jSplitPane1.setDividerLocation(200);
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPersonDetails.setFont(new java.awt.Font("Lava Devanagari", 1, 18)); // NOI18N
         lblPersonDetails.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonDetails.setText("Person Details");
-        jPanel2.add(lblPersonDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         lblID.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblID.setForeground(new java.awt.Color(255, 255, 255));
         lblID.setText("ID");
-        jPanel2.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         lblName.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
         lblName.setText("Name");
-        jPanel2.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         lblEmail.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email");
-        jPanel2.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         lblType.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblType.setForeground(new java.awt.Color(255, 255, 255));
         lblType.setText("Type");
-        jPanel2.add(lblType, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         lblMajor.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblMajor.setForeground(new java.awt.Color(255, 255, 255));
         lblMajor.setText("Major");
-        jPanel2.add(lblMajor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
-        jPanel2.add(fieldMajor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         fieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldIDActionPerformed(evt);
             }
         });
-        jPanel2.add(fieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
-        jPanel2.add(fieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
-        jPanel2.add(fieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Faculty" }));
         comboType.addActionListener(new java.awt.event.ActionListener() {
@@ -119,15 +124,72 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
                 comboTypeActionPerformed(evt);
             }
         });
-        jPanel2.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblPersonDetails))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblID)
+                .addGap(56, 56, 56)
+                .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblName)
+                .addGap(44, 44, 44)
+                .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblEmail)
+                .addGap(44, 44, 44)
+                .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblType)
+                .addGap(49, 49, 49)
+                .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblMajor)
+                .addGap(44, 44, 44)
+                .addComponent(fieldMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblPersonDetails)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblID)
+                    .addComponent(fieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblName)
+                    .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEmail)
+                    .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblType)
+                    .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMajor)
+                    .addComponent(fieldMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jSplitPane1.setLeftComponent(jPanel2);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Clear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +197,6 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 60, 20));
 
         jButton2.setText("Add");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +204,6 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 20));
 
         jButton3.setText("Update");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +211,6 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 20));
 
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -159,22 +218,41 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, 20));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 410, 80));
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton4)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         fieldSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldSearchActionPerformed(evt);
             }
         });
-        jPanel1.add(fieldSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 150, -1));
 
         btnSearch.setText("Search");
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Faculty", "All" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,7 +267,37 @@ public class ManagePersonsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 350, 260));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(fieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(btnSearch))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(27, 27, 27)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jSplitPane1.setRightComponent(jPanel1);
 
