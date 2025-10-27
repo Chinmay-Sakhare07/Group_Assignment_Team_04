@@ -4,17 +4,27 @@
  */
 package UserInterface.WorkArea.AdminRole;
 
+import Business.Business;
+import UserInterface.WorkAreas.AdminRole.AdministerUserAccountsWorkResp.ManageUserAccountsJPanel;
+import UserInterface.WorkAreas.AdminRole.ManagePersonnelWorkResp.ManagePersonsJPanel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author pranjalpatil
  */
 public class AdminWorkAreaPanel extends javax.swing.JPanel {
 
+    private JPanel CardSequencePanel;
+    private Business business;
+
     /**
      * Creates new form AdminWorkAreaPanel
      */
-    public AdminWorkAreaPanel() {
+    public AdminWorkAreaPanel(Business business, JPanel CardSequencePanel) {
         initComponents();
+        this.business = business;
+        this.CardSequencePanel = CardSequencePanel;
     }
 
     /**
