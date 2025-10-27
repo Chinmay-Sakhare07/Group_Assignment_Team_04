@@ -5,18 +5,17 @@
 package UserInterface.WorkAreas.FacultyRole;
 
 import Business.Business;
-import javax.swing.JPanel;
-import java.awt.CardLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
+import Business.Course;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.regex.Pattern;
-import javax.swing.event.ListSelectionListener;
 
 
 
@@ -26,9 +25,8 @@ import javax.swing.event.ListSelectionListener;
  */
 public class FacultyConsole extends javax.swing.JPanel {
 
-    private final Business business;
-    private final JPanel cardPanel;
-
+private final Business business;
+private final JPanel cardPanel;
 private DefaultTableModel courseModel;
 private TableRowSorter<TableModel> sorter;
 
