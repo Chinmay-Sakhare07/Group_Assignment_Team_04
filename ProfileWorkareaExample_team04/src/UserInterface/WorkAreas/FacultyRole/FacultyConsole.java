@@ -15,6 +15,9 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import java.util.regex.Pattern;
+import javax.swing.event.ListSelectionListener;
+
 
 
 /**
@@ -32,11 +35,13 @@ private TableRowSorter<TableModel> sorter;
     /**
      * Creates new form FacultyConsole
      */
-    public FacultyConsole(Business business, JPanel CardSequencePanel) {
-         this.business = business;
-         this.cardPanel = CardSequencePanel;
-        initComponents();
-    }
+   public FacultyConsole(Business business, JPanel CardSequencePanel) {
+    this.business = business;
+    this.cardPanel = CardSequencePanel;
+    initComponents();
+    initAfterGui();  // <-- add this line
+}
+
     
     
 
@@ -615,7 +620,8 @@ private TableRowSorter<TableModel> sorter;
     }//GEN-LAST:event_btnStudentGradeActionPerformed
 
     private void btnOpenEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenEnrollmentActionPerformed
-        
+        {  setEnrollment(true);
+}
     }//GEN-LAST:event_btnOpenEnrollmentActionPerformed
 
     private void txtCourseTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseTitleActionPerformed
@@ -703,4 +709,12 @@ private TableRowSorter<TableModel> sorter;
     private javax.swing.JTextField txtProfilesFacultyID;
     private javax.swing.JTextField txtProfilesPhone;
     // End of variables declaration//GEN-END:variables
+
+    private void initAfterGui() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setEnrollment(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
